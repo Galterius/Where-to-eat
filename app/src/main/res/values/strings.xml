@@ -1,0 +1,37 @@
+<resources>
+    <string name="restaurantLocation">Where can you find us</string>
+    <string name="contactUs">Contact Links</string>
+    <string name="app_name">RestaurantApp</string>
+    <string name="show_all">Show all</string>
+    <string name="show_cities">Show cities</string>
+    <string name="show_countries">Show countries</string>
+    <string name="restaurant_name">%s</string>
+    <string name="restaurant_address">Address: %s</string>
+    <string name="restaurant_city">City: %s</string>
+    <string name="restaurant_state">State: %s</string>
+    <string name="restaurant_area">Area: %s</string>
+    <string name="restaurant_postalCode">Postal Code: %s</string>
+    <string name="restaurant_country">Country: %s</string>
+    <string name="restaurant_phone">Phone number: %s</string>
+    <string name="restaurant_lat">Latitude $%,.0f</string>
+    <string name="restaurant_lng">Longitude $%,.0f</string>
+    <string name="restaurant_price">%d</string>
+    <string name="restaurant_reserveUrl">Reservation: %s</string>
+    <string name="restaurant_mobileReserveUrl">Mobile Reservation: %s</string>
+</resources>
+
+<!--    val id: Int,-->
+<!--    val name: String,-->
+<!--    val address: String,-->
+<!--    val city: String,-->
+<!--    val state: String,-->
+<!--    val area: String,-->
+<!--    @Json(name = "postal_code") val postalCode: String,-->
+<!--    val country: String,-->
+<!--    val phone: String,-->
+<!--    val lat: Float,-->
+<!--    val lng: Float,-->
+<!--    val price: Int,-->
+<!--    @Json(name = "reserve_url") val reserveUrl: String,-->
+<!--    @Json(name = "mobile_reserve_url") val mobileReserveUrl: String,-->
+<!--    @Json(name = "image_url") val imgUrl: String-->
