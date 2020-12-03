@@ -30,10 +30,10 @@ class DetailFragment: Fragment() {
                 viewModel.restaurantLocation.observe(viewLifecycleOwner, Observer {
                     if(viewModel.clicked.value == true) {
                         startActivity(it)
+                        viewModel.navigatedToMap()
                     }
                 })
             }
-            viewModel.navigatedToMap()
         })
 
 

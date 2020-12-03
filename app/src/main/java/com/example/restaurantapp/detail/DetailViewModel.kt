@@ -64,13 +64,6 @@ class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidVie
         app.applicationContext.getString(R.string.restaurant_phone, it.phone)
     }
 
-//    val displayRestaurantLat = Transformations.map(selectedRestaurant){
-//        app.applicationContext.getString(R.string.restaurant_lat, it.lat)
-//    }
-//
-//    val displayRestaurantLng = Transformations.map(selectedRestaurant){
-//        app.applicationContext.getString(R.string.restaurant_lng, it.lng)
-//    }
 
     val restaurantLocation = Transformations.map(selectedRestaurant){
         val gmnIntentUri = Uri.parse("geo:${it.lat},${it.lng}")
