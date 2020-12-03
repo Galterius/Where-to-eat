@@ -1,12 +1,10 @@
 package com.example.restaurantapp.detail
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import android.content.Intent
+import android.net.Uri
+import androidx.lifecycle.*
 import com.example.restaurantapp.R
-import com.example.restaurantapp.network.Restaurant
 import com.example.restaurantapp.network.RestaurantsInfo
 
 class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidViewModel(app) {
@@ -14,8 +12,24 @@ class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidVie
     val selectedRestaurant: LiveData<RestaurantsInfo>
         get() = _selectedRestaurant
 
+    private val _clicked = MutableLiveData<Boolean>()
+    val clicked: LiveData<Boolean>
+        get() = _clicked
+
+
     init {
         _selectedRestaurant.value = restaurant
+        _clicked.value = false
+    }
+
+
+
+    fun showMaps(){
+        _clicked.value = true
+    }
+
+    fun navigatedToMap(){
+        _clicked.value = false
     }
 
     val displayRestaurantName = Transformations.map(selectedRestaurant){
@@ -50,12 +64,18 @@ class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidVie
         app.applicationContext.getString(R.string.restaurant_phone, it.phone)
     }
 
-    val displayRestaurantLat = Transformations.map(selectedRestaurant){
-        app.applicationContext.getString(R.string.restaurant_lat, it.lat)
-    }
+//    val displayRestaurantLat = Transformations.map(selectedRestaurant){
+//        app.applicationContext.getString(R.string.restaurant_lat, it.lat)
+//    }
+//
+//    val displayRestaurantLng = Transformations.map(selectedRestaurant){
+//        app.applicationContext.getString(R.string.restaurant_lng, it.lng)
+//    }
 
-    val displayRestaurantLng = Transformations.map(selectedRestaurant){
-        app.applicationContext.getString(R.string.restaurant_lng, it.lng)
+    val restaurantLocation = Transformations.map(selectedRestaurant){
+        val gmnIntentUri = Uri.parse("geo:${it.lat},${it.lng}")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmnIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
     }
 
     val displayRestaurantPrice = Transformations.map(selectedRestaurant){

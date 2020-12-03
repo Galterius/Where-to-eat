@@ -1,4 +1,5 @@
 <resources>
+    <string name="mapButton">Find us on Google Maps</string>
     <string name="restaurantLocation">Where can you find us</string>
     <string name="contactUs">Contact Links</string>
     <string name="app_name">RestaurantApp</string>

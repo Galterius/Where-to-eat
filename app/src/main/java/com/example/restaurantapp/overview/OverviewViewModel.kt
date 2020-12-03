@@ -1,11 +1,9 @@
 package com.example.restaurantapp.overview
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.restaurantapp.network.Restaurant
 import com.example.restaurantapp.network.RestaurantApi
 import com.example.restaurantapp.network.RestaurantsInfo
 import kotlinx.coroutines.*
