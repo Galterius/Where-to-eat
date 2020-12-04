@@ -12,6 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
         tools:context=".DetailFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,9 +36,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:text="@{viewModel.displayRestaurantName}"
                 android:textColor="#de000000"
                 android:textSize="39sp"
-                android:text="@{viewModel.displayRestaurantName}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_photo_image"
                 tools:text="Restaurant name" />
@@ -124,11 +125,13 @@
                 android:id="@+id/reserve_url"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.displayRestaurantReserveUrl}"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="80dp"
+                android:text="@{viewModel.displayRestaurantReserveUrl}"
                 android:textColor="#de000000"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mobile_reserve_url"
                 tools:text="reserve_url" />
@@ -150,11 +153,12 @@
                 android:id="@+id/phone_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{viewModel.displayRestaurantPhone}"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:text="@{viewModel.displayRestaurantPhone}"
                 android:textColor="#de000000"
                 android:textSize="20sp"
+                android:textIsSelectable="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView"
                 tools:text="phone_number" />
@@ -192,8 +196,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/mapButton"
                 android:onClick="@{()-> viewModel.showMaps()}"
+                android:text="@string/mapButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 

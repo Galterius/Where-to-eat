@@ -21,6 +21,7 @@
     <string name="restaurant_mobileReserveUrl">Mobile Reservation: %s</string>
 
     <string name="about_text">This app is about restaurants and stuff, kinda boring</string>
+    <string name="edit_profile">Edit your Profile</string>
 </resources>
 
 <!--    val id: Int,-->

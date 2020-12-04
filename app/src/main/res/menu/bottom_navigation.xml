@@ -7,9 +7,9 @@
         />
 
     <item
-        android:id="@+id/loginFragment"
+        android:id="@+id/userProfile"
         android:icon="@drawable/ic_baseline_login_24"
-        android:title="Login"
+        android:title="Profile"
         />
 
     <item
