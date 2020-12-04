@@ -52,6 +52,8 @@ dependencies {
     // implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$version_kotlin"
 
+    
+
     // Constraint Layout
     implementation "androidx.constraintlayout:constraintlayout:$version_constraint_layout"
 
@@ -89,7 +91,8 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$version_recyclerview"
 
     implementation "androidx.preference:preference-ktx:1.1.1"
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.2.1'
+
     implementation "com.squareup.okhttp3:okhttp:3.14.9"
 
     implementation 'com.google.code.gson:gson:2.8.6'

@@ -2,6 +2,8 @@ package com.example.restaurantapp.overview
 
 import android.os.Bundle
 import android.view.*
+import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +14,8 @@ import com.example.restaurantapp.databinding.FragmentOverviewBinding
 
 
 class OverviewFragment: Fragment() {
+
+
 
     private val viewModel: OverviewViewModel by lazy {
         ViewModelProvider(this).get(OverviewViewModel::class.java)
@@ -27,6 +31,7 @@ class OverviewFragment: Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
+
 
         binding.photosGrid.adapter = PhotoGridAdapter(PhotoGridAdapter.OnClickListener{
             viewModel.displayRestaurantDetails(it)
