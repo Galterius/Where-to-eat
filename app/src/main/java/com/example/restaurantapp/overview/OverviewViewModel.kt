@@ -1,6 +1,8 @@
 package com.example.restaurantapp.overview
 
 import android.util.Log
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,6 +26,7 @@ class OverviewViewModel: ViewModel(){
     private val _navigateToSelectedRestaurant = MutableLiveData<RestaurantsInfo>()
     val navigateToSelectedRestaurant: LiveData<RestaurantsInfo>
     get() = _navigateToSelectedRestaurant
+
 
     private var viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)

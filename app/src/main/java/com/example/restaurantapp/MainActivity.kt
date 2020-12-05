@@ -2,6 +2,7 @@ package com.example.restaurantapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment)
         bottomNavigationView.setupWithNavController(navController)
         setupActionBarWithNavController(findNavController(R.id.nav_host_fragment))
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

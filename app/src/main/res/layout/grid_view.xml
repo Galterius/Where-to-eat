@@ -7,6 +7,10 @@
         <variable
             name="restaurant"
             type="com.example.restaurantapp.network.RestaurantsInfo" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.restaurantapp.overview.OverviewViewModel" />
     </data>
 
     <LinearLayout
@@ -27,14 +31,23 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="24dp"
+            android:textSize="24sp"
             android:text="@{restaurant.name}"
+            android:hint="Restaurant name"
             android:paddingTop="0dp"
             android:paddingBottom="16dp"
             android:paddingEnd="8dp"
             />
 
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_favorite_border"
+            android:contentDescription="Toggle your restaurant"
+            />
+
+    </LinearLayout>
 
 
 

@@ -3,6 +3,7 @@ package com.example.restaurantapp.detail
 import android.app.Application
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.*
 import com.example.restaurantapp.R
 import com.example.restaurantapp.network.RestaurantsInfo
@@ -83,5 +84,8 @@ class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidVie
         app.applicationContext.getString(R.string.restaurant_mobileReserveUrl, it.mobileReserveUrl)
     }
 
+    fun getName(name: String){
+        Log.i("res name", "${name}")
+    }
 
 }
