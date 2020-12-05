@@ -22,20 +22,22 @@
 
     <string name="about_text">This app is about restaurants and stuff, kinda boring</string>
     <string name="edit_profile">Edit your Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
 
-<!--    val id: Int,-->
-<!--    val name: String,-->
-<!--    val address: String,-->
-<!--    val city: String,-->
-<!--    val state: String,-->
-<!--    val area: String,-->
-<!--    @Json(name = "postal_code") val postalCode: String,-->
-<!--    val country: String,-->
-<!--    val phone: String,-->
-<!--    val lat: Float,-->
-<!--    val lng: Float,-->
-<!--    val price: Int,-->
-<!--    @Json(name = "reserve_url") val reserveUrl: String,-->
-<!--    @Json(name = "mobile_reserve_url") val mobileReserveUrl: String,-->
-<!--    @Json(name = "image_url") val imgUrl: String-->
+    <!--    val id: Int,-->
+    <!--    val name: String,-->
+    <!--    val address: String,-->
+    <!--    val city: String,-->
+    <!--    val state: String,-->
+    <!--    val area: String,-->
+    <!--    @Json(name = "postal_code") val postalCode: String,-->
+    <!--    val country: String,-->
+    <!--    val phone: String,-->
+    <!--    val lat: Float,-->
+    <!--    val lng: Float,-->
+    <!--    val price: Int,-->
+    <!--    @Json(name = "reserve_url") val reserveUrl: String,-->
+    <!--    @Json(name = "mobile_reserve_url") val mobileReserveUrl: String,-->
+    <!--    @Json(name = "image_url") val imgUrl: String-->
