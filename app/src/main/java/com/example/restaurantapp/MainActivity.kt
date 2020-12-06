@@ -1,7 +1,9 @@
 package com.example.restaurantapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.ImageButton
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
