@@ -3,6 +3,7 @@ package com.example.restaurantapp.profile
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +12,19 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.restaurantapp.R
+import com.example.restaurantapp.model.Restaurant
 import com.example.restaurantapp.model.User
+import com.example.restaurantapp.network.RestaurantsInfo
+import com.example.restaurantapp.userviewmodel.FavoriteViewModel
 import com.example.restaurantapp.userviewmodel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
 import kotlinx.android.synthetic.main.fragment_add.view.*
+import kotlinx.android.synthetic.main.fragment_detail.view.*
 
 class AddFragment : Fragment() {
 
     private lateinit var mUserViewModel: UserViewModel
+//
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -26,11 +32,13 @@ class AddFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+//
 
         view.add_button.setOnClickListener {
             insertDataToDatabase()
 
         }
+
 
         return view
     }
@@ -50,7 +58,7 @@ class AddFragment : Fragment() {
             Toast.makeText(requireContext(), "Successfully added", Toast.LENGTH_LONG).show()
 
             //navigating back
-            findNavController().navigate(R.id.action_addFragment_to_userProfile2)
+            findNavController().navigate(R.id.action_addFragment_to_userProfile)
         }else{
             Toast.makeText(requireContext(), "All fields are required", Toast.LENGTH_LONG).show()
         }

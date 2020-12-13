@@ -3,12 +3,19 @@ package com.example.restaurantapp.detail
 import android.app.Application
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.*
 import com.example.restaurantapp.R
 import com.example.restaurantapp.network.RestaurantsInfo
+import com.example.restaurantapp.userviewmodel.FavoriteViewModel
 
 class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidViewModel(app) {
+
+    private lateinit var mFavoriteViewModel: FavoriteViewModel
+
+    private val _insertIntoDatabase = MutableLiveData<Boolean>()
+    val insertIntoDatabase: LiveData<Boolean>
+        get() = _insertIntoDatabase
+
     private val _selectedRestaurant = MutableLiveData<RestaurantsInfo>()
     val selectedRestaurant: LiveData<RestaurantsInfo>
         get() = _selectedRestaurant
@@ -17,10 +24,13 @@ class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidVie
     val clicked: LiveData<Boolean>
         get() = _clicked
 
+    val name = MutableLiveData<String>()
+
 
     init {
         _selectedRestaurant.value = restaurant
         _clicked.value = false
+        _insertIntoDatabase.value = false
     }
 
 
@@ -31,6 +41,15 @@ class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidVie
 
     fun navigatedToMap(){
         _clicked.value = false
+    }
+
+    fun insertToDb(restaurant_name: String){
+        _insertIntoDatabase.value = true
+        name.value = restaurant_name
+    }
+
+    fun insertedToDb(){
+        _insertIntoDatabase.value = false
     }
 
     val displayRestaurantName = Transformations.map(selectedRestaurant){
@@ -84,8 +103,5 @@ class DetailViewModel(restaurant: RestaurantsInfo, app: Application): AndroidVie
         app.applicationContext.getString(R.string.restaurant_mobileReserveUrl, it.mobileReserveUrl)
     }
 
-    fun getName(name: String){
-        Log.i("res name", "${name}")
-    }
 
 }

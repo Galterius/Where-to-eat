@@ -9,8 +9,8 @@ import kotlinx.android.parcel.RawValue
 @Parcelize
 data class Restaurant(
     val total_entries: Int,
+    val page: Int,
     val per_page: Int,
-    val current_page: Int,
     @Json(name = "restaurants") val restaurantInfo: List<RestaurantsInfo>
 ): Parcelable
 
