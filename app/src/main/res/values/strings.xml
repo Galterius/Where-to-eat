@@ -19,6 +19,8 @@
     <string name="restaurant_price">%d</string>
     <string name="restaurant_reserveUrl">Reservation: %s</string>
     <string name="restaurant_mobileReserveUrl">Mobile Reservation: %s</string>
+    <string name="favorites">Your Favorite Restaurants:</string>
+
 
     <string name="about_text">This app is about restaurants and stuff, kinda boring</string>
     <string name="edit_profile">Edit your Profile</string>

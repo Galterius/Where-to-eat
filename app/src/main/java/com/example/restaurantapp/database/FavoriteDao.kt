@@ -6,7 +6,9 @@ import com.example.restaurantapp.model.Restaurant
 
 @Dao
 interface FavoriteDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+
+
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addFavoritRestaurant(restaurant: Restaurant)
 
     @Query("SELECT * FROM FAVORITE_TABLE")
@@ -17,5 +19,8 @@ interface FavoriteDao {
 
     @Query("DELETE FROM FAVORITE_TABLE")
     suspend fun deleteAllFavorite()
+
+    @Query("Delete from favorite_table where restaurantName= :restaurant_name")
+    suspend fun deleteOneFavorite(restaurant_name: String)
 
 }

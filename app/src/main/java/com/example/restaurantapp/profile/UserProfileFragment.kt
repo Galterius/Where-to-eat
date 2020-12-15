@@ -2,6 +2,7 @@ package com.example.restaurantapp.profile
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.restaurantapp.R
+import com.example.restaurantapp.detail.DetailViewModel
 import com.example.restaurantapp.userviewmodel.FavoriteViewModel
 import com.example.restaurantapp.userviewmodel.UserViewModel
 import kotlinx.android.synthetic.main.costum_row.view.*
@@ -19,7 +21,9 @@ import kotlinx.android.synthetic.main.login_fragment.view.*
 class UserProfileFragment: Fragment() {
 
     private lateinit var mUserViewModel: UserViewModel
-    private lateinit var mFavoriteViewModel: FavoriteViewModel
+    private val mFavoriteViewModel: FavoriteViewModel by lazy {
+        ViewModelProvider(this).get(FavoriteViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,7 +34,9 @@ class UserProfileFragment: Fragment() {
 
         //recyclerview
         val adapter = ListAdapter()
-        val adapter2 = ListAdapterFavorite()
+//        val adapter2: ListAdapterFavorite by lazy {
+//            ViewModelProvider(this).get(ListAdapterFavorite::class.java)
+//        }
 
         val recyclerView = view.recyclerview
 
@@ -41,18 +47,19 @@ class UserProfileFragment: Fragment() {
 
         //UserViewModel
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        mFavoriteViewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+
+
+        val mFavoriteViewModel: FavoriteViewModel by lazy {
+            ViewModelProvider(this).get(FavoriteViewModel::class.java)
+        }
 
         mUserViewModel.readAllData.observe(viewLifecycleOwner, Observer { user ->
             adapter.setData(user)
             mFavoriteViewModel.readAllData.observe(viewLifecycleOwner, Observer { favorite ->
                 adapter.setFavorite(favorite)
+                mFavoriteViewModel.deleteFavorite(adapter.test)
             })
-
         })
-
-
-
 
 
         view.floatingActionButton.setOnClickListener{
@@ -68,6 +75,8 @@ class UserProfileFragment: Fragment() {
         inflater.inflate(R.menu.delete_menu, menu)
     }
 
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.menu_delete){
             deleteAllUsers()
@@ -75,6 +84,8 @@ class UserProfileFragment: Fragment() {
 
         return super.onOptionsItemSelected(item)
     }
+
+
 
     private fun deleteAllUsers() {
         val builder = AlertDialog.Builder(requireContext())
@@ -91,4 +102,5 @@ class UserProfileFragment: Fragment() {
         builder.setMessage("Do you want to delete every user?")
         builder.create().show()
     }
+
 }

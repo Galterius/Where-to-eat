@@ -11,11 +11,11 @@ class FavoriteRepository(private  val favoriteDao: FavoriteDao) {
         favoriteDao.addFavoritRestaurant(restaurant)
     }
 
-    suspend fun deleteRestaurant(restaurant: Restaurant){
-        favoriteDao.deleteFavoriteRestaurant(restaurant)
-    }
-
     suspend fun deleteAllFavorite(){
         favoriteDao.deleteAllFavorite()
+    }
+
+    suspend fun deleteOneFavorite(restaurant_name: String){
+        favoriteDao.deleteOneFavorite(restaurant_name)
     }
 }
