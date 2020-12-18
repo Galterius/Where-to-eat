@@ -1,24 +1,25 @@
 package com.example.restaurantapp.profile
 
-import android.util.Log
+import android.graphics.Bitmap
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
+import androidx.core.net.toUri
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.bumptech.glide.Glide
 import com.example.restaurantapp.R
-import com.example.restaurantapp.detail.DetailViewModel
 import com.example.restaurantapp.model.Restaurant
 import com.example.restaurantapp.model.User
-import com.example.restaurantapp.userviewmodel.FavoriteViewModel
 import kotlinx.android.synthetic.main.costum_row.view.*
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     private var userList = emptyList<User>()
     private var favoriteList: String = ""
-    var test: String = ""
+    var duplicatedRestaurant: String = ""
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
@@ -39,13 +40,17 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = userList[position]
+        val imgUri = currentItem.profilePhoto.toUri().buildUpon().scheme("content").build()
 
-        holder.itemView.id_text.text = currentItem.id.toString()
         holder.itemView.firstName_txt.text = currentItem.firstName
         holder.itemView.lastName_txt.text = currentItem.lastName
         holder.itemView.age_txt.text = currentItem.age.toString()
+        holder.itemView.profile_picture.setImageURI(imgUri)
 
-       holder.itemView.textView3.text = favoriteList
+
+
+
+        holder.itemView.textView3.text = favoriteList
 
 
         //when the user selects a row we will navigate to the selected rows update fragment
@@ -68,7 +73,8 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
                 temp += "${it.id}: ${it.restaurantName} \n"
             }
 
-            test = favorite.groupingBy { it.restaurantName }.eachCount().filter { it.value > 1 }.toString().split("\\=".toRegex())[0].split("\\{".toRegex())[1]
+            //getting the restaurant that is duplicated
+            duplicatedRestaurant = favorite.groupingBy { it.restaurantName }.eachCount().filter { it.value > 1 }.toString().split("\\=".toRegex())[0].split("\\{".toRegex())[1]
 
             this.favoriteList = temp
             notifyDataSetChanged()

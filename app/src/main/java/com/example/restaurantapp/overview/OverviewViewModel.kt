@@ -15,6 +15,8 @@ enum class  RestaurantApiStatus {LOADING, DONE, ERROR}
 
 class OverviewViewModel: ViewModel(){
 
+    lateinit var stringPrice: String
+
     private val _status = MutableLiveData<RestaurantApiStatus>()
     val status: LiveData<RestaurantApiStatus>
         get() = _status
@@ -67,5 +69,11 @@ class OverviewViewModel: ViewModel(){
         _navigateToSelectedRestaurant.value = null
     }
 
+
+
+    fun intToString(price: Int){
+        stringPrice =  price.toString()
+
+    }
 
 }

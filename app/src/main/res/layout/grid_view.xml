@@ -13,7 +13,7 @@
             type="com.example.restaurantapp.overview.OverviewViewModel" />
     </data>
 
-    <LinearLayout
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -30,26 +30,40 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textSize="24sp"
-            android:text="@{restaurant.name}"
+            android:layout_height="wrap_content"
             android:hint="Restaurant name"
             android:paddingTop="0dp"
-            android:paddingBottom="16dp"
             android:paddingEnd="8dp"
-            />
+            android:paddingBottom="8dp"
+            android:text="@{restaurant.name}"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:hint="Restaurant Address"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:text="@{restaurant.address}"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="172dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:hint="Restaurant rating"
+            android:text="@{restaurant.price+'$'}"
+            android:textSize="16sp" />
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imageButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_favorite_border"
-            android:contentDescription="Toggle your restaurant"
-            />
-
-    </LinearLayout>
+            app:srcCompat="@drawable/ic_favorite_border" />
 
 
+    </GridLayout>
 
 
 </layout>

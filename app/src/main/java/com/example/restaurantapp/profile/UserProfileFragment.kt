@@ -34,9 +34,6 @@ class UserProfileFragment: Fragment() {
 
         //recyclerview
         val adapter = ListAdapter()
-//        val adapter2: ListAdapterFavorite by lazy {
-//            ViewModelProvider(this).get(ListAdapterFavorite::class.java)
-//        }
 
         val recyclerView = view.recyclerview
 
@@ -57,7 +54,7 @@ class UserProfileFragment: Fragment() {
             adapter.setData(user)
             mFavoriteViewModel.readAllData.observe(viewLifecycleOwner, Observer { favorite ->
                 adapter.setFavorite(favorite)
-                mFavoriteViewModel.deleteFavorite(adapter.test)
+                mFavoriteViewModel.deleteFavorite(adapter.duplicatedRestaurant)
             })
         })
 

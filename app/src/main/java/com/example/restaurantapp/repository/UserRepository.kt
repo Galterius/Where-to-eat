@@ -5,7 +5,7 @@ import com.example.restaurantapp.database.UserDao
 import com.example.restaurantapp.model.User
 
 class UserRepository(private val userDao: UserDao) {
-    val readAllDatabase: LiveData<List<User>> = userDao.readAllData()
+    val readAllDatabase: LiveData<List<User>> = userDao.readAllTextDetail()
 
     suspend fun addUser(user: User){
         userDao.addUser(user)

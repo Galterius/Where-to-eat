@@ -1,5 +1,6 @@
 package com.example.restaurantapp.database
 
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.restaurantapp.model.User
@@ -12,7 +13,8 @@ interface UserDao {
     suspend fun addUser(user: User)
 
     @Query("SELECT * FROM USER_TABLE")
-    fun readAllData(): LiveData<List<User>>
+    fun readAllTextDetail(): LiveData<List<User>>
+
 
     @Update
     suspend fun updateUser(user: User)

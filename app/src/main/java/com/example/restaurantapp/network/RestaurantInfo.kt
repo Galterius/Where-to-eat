@@ -17,7 +17,7 @@ data class RestaurantsInfo(
         val phone: String,
         val lat: Float,
         val lng: Float,
-        val price: Int,
+        val price: String,
         @Json(name = "reserve_url") val reserverUrl: String,
         @Json(name = "mobile_reserve_url") val mobileReserveUrl: String,
         @Json(name = "image_url") val imgUrl: String
