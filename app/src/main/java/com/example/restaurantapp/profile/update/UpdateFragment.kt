@@ -60,7 +60,11 @@ class UpdateFragment : Fragment() {
         view.updateFirstName_et.setText(args.currentUser.firstName)
         view.updateLastName_et.setText(args.currentUser.lastName)
         view.updateAge_et.setText(args.currentUser.age.toString())
+        view.update_Email_addr.setText(args.currentUser.email)
+        view.update_phone_num.setText(args.currentUser.phoneNumber)
         view.update_photo_link.text = args.currentUser.profilePhoto
+
+
 
         view.update_photo.setOnClickListener {
             if(Build.VERSION.SDK_INT >= 26){
@@ -94,11 +98,13 @@ class UpdateFragment : Fragment() {
         val firstName = updateFirstName_et.text.toString()
         val lastName = updateLastName_et.text.toString()
         val age = Integer.parseInt(updateAge_et.text.toString())
+        val email = update_Email_addr.text.toString()
+        val phone = update_phone_num.text.toString()
         val photoLink = update_photo_link.text.toString()
 
-        if(inputCheck(firstName, lastName, updateAge_et.text, photoLink)){
+        if(inputCheck(firstName, lastName, updateAge_et.text, email, phone ,photoLink)){
             //creating the updated user object
-            val updateUser = User(args.currentUser.id, firstName, lastName, age, photoLink)
+            val updateUser = User(args.currentUser.id, firstName, lastName, age,email, phone ,photoLink)
 
             mUserViewModel.updateUser(updateUser)
             Toast.makeText(requireContext(), "Successfully updated", Toast.LENGTH_LONG).show()
@@ -110,9 +116,9 @@ class UpdateFragment : Fragment() {
         }
     }
 
-    private fun inputCheck(firstName: String, lastName: String, age: Editable, photoLink: String): Boolean {
+    private fun inputCheck(firstName: String, lastName: String, age: Editable,email: String, phone: String ,photoLink: String): Boolean {
         //return false if empty
-        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty() && TextUtils.isEmpty(photoLink))
+        return !(TextUtils.isEmpty(firstName) && TextUtils.isEmpty(lastName) && age.isEmpty() && TextUtils.isEmpty(photoLink) && TextUtils.isEmpty(email) && TextUtils.isEmpty(phone))
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
