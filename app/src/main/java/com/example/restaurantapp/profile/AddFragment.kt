@@ -19,6 +19,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -42,7 +43,7 @@ class AddFragment : Fragment() {
     }
 
     private lateinit var mUserViewModel: UserViewModel
-    private lateinit var photoMap: Bitmap
+    var photoUri = MutableLiveData<String>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -81,9 +82,9 @@ class AddFragment : Fragment() {
         val firstName = addFirstName_et.text.toString()
         val lastName = addLastName_et.text.toString()
         val age = addAge_et.text
-        val photoLink = photo_link.text.toString()
+        val photoLink = photoUri.value
 
-        if(inputCheck(firstName, lastName, age, photoLink)){
+        if(photoLink?.let { inputCheck(firstName, lastName, age, it) } == true){
             //create user object
             val user = User(0, firstName, lastName, Integer.parseInt(age.toString()), photoLink)
 
@@ -133,6 +134,7 @@ class AddFragment : Fragment() {
     //handle the result
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE) {
+            photoUri.value = data?.data.toString()
             photo_link.text = data?.data.toString()
         }
     }
